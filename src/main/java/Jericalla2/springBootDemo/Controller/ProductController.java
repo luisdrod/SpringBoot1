@@ -1,7 +1,5 @@
 package Jericalla2.springBootDemo.Controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,12 +7,9 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +38,7 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<List<Product>> listProduct(@RequestParam (name="categoryId", required = false) Long categoryId){
-        List<Product> products = new ArrayList();
+        List<Product> products;
         if (categoryId == null)
             products = productService.listAllProduct();
         else{
